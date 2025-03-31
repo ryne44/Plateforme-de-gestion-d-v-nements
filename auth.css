@@ -1,0 +1,47 @@
+/* Styles pour les pages d'authentification */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 2rem;
+}
+
+.auth-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-card h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.logo {
+    max-width: 200px;
+}
+
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #d80000;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+
+
+.auth-link a {
+    color: #d10000;
+    text-decoration: none;
+}
