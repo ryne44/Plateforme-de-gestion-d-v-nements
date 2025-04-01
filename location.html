@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location - SPORT RENT</title>
+    <link rel="stylesheet" href="location.css">
+    <link rel="stylesheet" href="acceuil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="images/Capture.jpg" alt="SPORT RENT" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="acceuil.html">Accueil</a></li>
+                    <li><a href="evenements.html">Événements</a></li>
+                    <li><a href="location.html" class="active">Location</a></li>
+                    <li><a href="dashboard.html">Espace Perso</a></li>
+                    <li><a href="connexion.html">Connexion</a></li>
+                    <li><a href="inscription.html">Inscription</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>Location d'Équipements</h1>
+            <p>Trouvez le matériel parfait pour votre pratique sportive</p>
+        </section>
+
+        <section class="location-container">
+            <div class="filters">
+                <select id="category-filter">
+                    <option value="all">Toutes catégories</option>
+                    <option value="football">Football</option>
+                    <option value="tennis">Tennis</option>
+                    <option value="randonnee">Randonnée</option>
+                </select>
+                <input type="text" id="search-equipment" placeholder="Rechercher un équipement...">
+            </div>
+
+            <div class="equipment-grid" id="equipment-container">
+                <!-- Contenu chargé dynamiquement -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 SPORT RENT - Tous droits réservés</p>
+    </footer>
+
+    <script src="location.js"></script>
+</body>
+</html>

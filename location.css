@@ -1,0 +1,161 @@
+/* LOCATION.CSS - Même structure que events.css */
+
+/* Variables */
+:root {
+    --primary: #d10000;
+    --secondary: #2c3e50;
+    --light: #ffffff;
+    --gray: #7f8c8d;
+    --text: #333333;
+}
+
+/* En-tête de page identique */
+.page-header {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/equipement.jpg') center/cover;
+    color: white;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.page-header p {
+    font-size: 1.2rem;
+}
+
+/* Réduction de la taille du logo */
+.logo {
+    max-width: 200px;
+    height: auto;
+}
+/* Conteneur principal identique */
+.location-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* Barre de filtres identique */
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filters select, 
+.filters input {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.filters select {
+    min-width: 200px;
+}
+
+.filters input {
+    flex: 1;
+    min-width: 250px;
+}
+
+/* Grille identique */
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+/* Carte équipement - Même style que event-card */
+.equipment-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.equipment-card:hover {
+    transform: translateY(-5px);
+}
+
+.equipment-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.equipment-info {
+    padding: 1.5rem;
+}
+
+/* Type d'équipement comme event-sport */
+.equipment-type {
+    display: inline-block;
+    background-color: var(--primary);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.equipment-info h3 {
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+/* Métadonnées identiques */
+.equipment-meta {
+    display: flex;
+    justify-content: space-between;
+    color: var(--gray);
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.equipment-meta i {
+    margin-right: 0.5rem;
+    color: var(--primary);
+}
+
+.equipment-price {
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.equipment-description {
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+/* Bouton identique */
+.btn-rent {
+    display: inline-block;
+    background-color: var(--primary);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-rent:hover {
+    background-color: #b00000;
+}
+
+/* Message aucun résultat */
+.no-results {
+    text-align: center;
+    grid-column: 1 / -1;
+    color: var(--gray);
+    padding: 2rem;
+}
