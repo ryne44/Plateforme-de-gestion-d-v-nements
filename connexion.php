@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - Gestion d'Événements et Location</title>
-    <link rel="stylesheet" href="acceuil.css">
     <link rel="stylesheet" href="connexion.css">
+    <link rel="stylesheet" href="acceuil.css">
 </head>
 <body>
     <header>
-        <h1>Connexion</h1>
+       
         <nav>
             <ul>
                 <li><a href="acceuil.html">Accueil</a></li>
@@ -45,3 +45,32 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+<?php
+session_start();
+require 'db_connect.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    
+    $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE email = ?");
+    $stmt->execute([$email]);
+    $user = $stmt->fetch();
+    
+    if ($user && password_verify($password, $user['mot_de_passe'])) {
+        $_SESSION['user'] = [
+            'id' => $user['id'],
+            'nom' => $user['nom'],
+            'email' => $user['email'],
+            'role' => $user['role']
+        ];
+        header('Location: dashboard.php');
+        exit;
+    } else {
+        $error = "Identifiants incorrects";
+    }
+}
+?>
+
+<!-- Formulaire de connexion HTML -->
