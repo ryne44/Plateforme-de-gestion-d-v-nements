@@ -1,41 +1,6 @@
-/* Styles généraux */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-}
 
-header {
-    background-color: #f4f4f4;
-    padding: 1rem 0;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
 
-header h1 {
-    margin: 0;
-    color: #2c3e50;
-}
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #d10000;
-    font-weight: bold;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
-}
 
 /* Section Connexion */
 #connexion {
@@ -48,12 +13,12 @@ nav ul li a:hover {
 }
 
 #connexion h2 {
-    color: #2c3e50;
+    color: var(--secondary);
     margin-bottom: 1.5rem;
 }
 
 #form-connexion {
-    background: white;
+    background: var(--light);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 2rem;
@@ -65,27 +30,28 @@ nav ul li a:hover {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
-    color: #2c3e50;
+    color: var(--secondary);
 }
 
 #form-connexion input {
     width: 100%;
     padding: 0.8rem;
-    border: 1px solid #d80000;
+    border: 1px solid var(--primary);
     border-radius: 4px;
     font-size: 1rem;
     margin-bottom: 1.5rem;
 }
 
 #form-connexion button {
-    background-color: #d80000;
-    color: white;
+    background-color: var(--primary);
+    color: var(--light);
     border: none;
     padding: 0.8rem 1.5rem;
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
     width: 100%;
+    transition: background-color 0.3s;
 }
 
 #form-connexion button:hover {
@@ -98,20 +64,9 @@ nav ul li a:hover {
 }
 
 #connexion p a {
-    color: #d10000;
+    color: var(--primary);
     text-decoration: none;
     font-size: 0.9rem;
+    transition: color 0.3s, text-decoration 0.3s;
 }
 
-#connexion p a:hover {
-    text-decoration: underline;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 1rem 0;
-    background-color: #f4f4f4;
-    border-top: 1px solid #ddd;
-    color: #2c3e50;
-}
