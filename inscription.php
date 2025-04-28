@@ -114,6 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </main>
 
-    <script src="inscription.js"></script>
+  
 </body>
 </html>

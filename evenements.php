@@ -1,26 +1,17 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Événements Sportifs - SPORT RENT</title>
-    <link rel="stylesheet" href="accueil.css">
-    <link rel="stylesheet" href="evenements.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-
-
-
-
-
 <?php
 session_start();
 require 'db_connect.php';
 
+// Récupérer les événements de la base de données
+$stmt = $pdo->query("SELECT * FROM evenements ORDER BY date");
+$events = $stmt->fetchAll();
+
+// Traitement de l'inscription à un événement
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['s_inscrire'])) {
     if (!isset($_SESSION['user'])) {
+        // Stocker l'ID de l'événement dans la session pour y revenir après connexion
         $_SESSION['redirect_to'] = 'evenements.php';
+        $_SESSION['event_id'] = $_POST['event_id']; // Stocker l'ID de l'événement
         header('Location: connexion.php');
         exit;
     }
@@ -46,29 +37,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['s_inscrire'])) {
     header('Location: evenements.php');
     exit;
 }
+
+// Vérifier l'état de connexion pour déboguer
+$is_logged_in = isset($_SESSION['user']);
 ?>
 
-
-
-    <!-- Même structure d'en-tête que l'accueil -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Événements Sportifs - SPORT RENT</title>
+    <link rel="stylesheet" href="accueil.css">
+    <link rel="stylesheet" href="evenements.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
     <header>
         <div class="header-content">
-            <img src="images/Capture.jpg" alt="SPORT RENT Logo">
+            <div class="logo">
+                <img src="images/Capture.jpg" alt="SPORT RENT Logo">
             </div>
             
             <nav>
-            <ul>
-                <li><a href="accueil.html">Accueil</a></li>
-                <li><a href="evenements.php" class="active">Événements</a></li>
-                <li><a href="location.php">Location</a></li>
-                <li><a href="dashboard.php">Espace Perso</a></li>
-                <?php if(isset($_SESSION['user_id'])): ?>
-                    <li><a href="logout.php">Déconnexion</a></li>
-                <?php else: ?>
-                    <li><a href="connexion.php">Connexion</a></li>
-                    <li><a href="inscription.php">Inscription</a></li>
-                <?php endif; ?>
-            </ul>
+                <ul>
+                    <li><a href="accueil.html">Accueil</a></li>
+                    <li><a href="evenements.php" class="active">Événements</a></li>
+                    <li><a href="location.php">Location</a></li>
+                    <li><a href="dashboard.php">Espace Perso</a></li>
+                    <?php if($is_logged_in): ?>
+                        <li><a href="logout.php">Déconnexion</a></li>
+                    <?php else: ?>
+                        <li><a href="connexion.php">Connexion</a></li>
+                        <li><a href="inscription.php">Inscription</a></li>
+                    <?php endif; ?>
+                </ul>
             </nav>
         </div>
     </header>
@@ -78,6 +81,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['s_inscrire'])) {
             <h1>Événements Sportifs</h1>
             <p>Découvrez et participez aux prochains événements près de chez vous</p>
         </section>
+
+        <?php if(isset($_SESSION['success'])): ?>
+            <div class="alert success"><?php echo $_SESSION['success']; unset($_SESSION['success']); ?></div>
+        <?php endif; ?>
+
+        <?php if(isset($_SESSION['error'])): ?>
+            <div class="alert error"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></div>
+        <?php endif; ?>
+
+        <!-- Message de débogage pour confirmer l'état de connexion -->
+        <?php if($is_logged_in): ?>
+            <div class="alert info">Connecté en tant que <?= htmlspecialchars($_SESSION['user']['nom']) ?></div>
+        <?php endif; ?>
 
         <section class="events-container">
             <div class="filters">
@@ -107,7 +123,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['s_inscrire'])) {
                             <span><i class="fas fa-tag"></i> <?= htmlspecialchars($event['prix']) ?>€</span>
                         </div>
                         <p class="event-description"><?= htmlspecialchars($event['description']) ?></p>
-                        <a href="dashboard.php?action=register_event&event_id=<?= $event['id'] ?>" class="btn-event">S'inscrire</a>
+                        
+                        <form method="post" action="evenements.php">
+                            <input type="hidden" name="event_id" value="<?= $event['id'] ?>">
+                            <button type="submit" name="s_inscrire" class="btn-event">
+                                <?php if($is_logged_in): ?>
+                                    S'inscrire
+                                <?php else: ?>
+                                    Se connecter pour s'inscrire
+                                <?php endif; ?>
+                            </button>
+                        </form>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -121,6 +147,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['s_inscrire'])) {
         </div>
     </footer>
 
-    <script src="events.js"></script>
+    
 </body>
 </html>

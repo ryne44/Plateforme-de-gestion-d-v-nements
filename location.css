@@ -159,3 +159,70 @@
     color: var(--gray);
     padding: 2rem;
 }
+
+/* Styles pour les messages d'alerte */
+.alert {
+    padding: 1rem;
+    margin: 1rem auto;
+    border-radius: 6px;
+    max-width: 1200px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.alert.info {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+    border: 1px solid #bbdefb;
+}
+
+.alert.success {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+    border: 1px solid #c8e6c9;
+}
+
+.alert.error {
+    background-color: #ffebee;
+    color: #b71c1c;
+    border: 1px solid #ffcdd2;
+}
+
+/* Animation subtile pour attirer l'attention */
+.alert {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive design pour mobile */
+@media (max-width: 768px) {
+    .alert {
+        margin: 1rem;
+        padding: 0.8rem;
+    }
+}
+
+/* Styles pour le formulaire de réservation */
+.date-fields {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.date-fields label {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.date-fields input[type="date"] {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+}

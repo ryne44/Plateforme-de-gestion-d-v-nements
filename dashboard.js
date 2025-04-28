@@ -28,17 +28,17 @@ document.addEventListener('DOMContentLoaded', function() {
             <span class="status">${res.status}</span>
         `;
         reservationList.appendChild(item);
-    });w
+    }); // Suppression du 'w' ici
 
     // Déconnexion
     document.getElementById('logout-btn').addEventListener('click', function() {
         if (confirm('Voulez-vous vraiment vous déconnecter ?')) {
-            window.location.href = 'acceuil.html';
+            window.location.href = 'accueil.html';
         }
     });
 
     // Édition du profil
     document.getElementById('edit-profile').addEventListener('click', function() {
-        alert('Fonctionnalité à implémenter');
+        window.location.href = 'edit_profile.php';
     });
 });
