@@ -29,16 +29,16 @@ if (!isset($_SESSION['user'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - SPORT RENT</title>
-    <link rel="stylesheet" href="accueil.css"> <!-- Style spécifique pour la page de connexion -->
-    <link rel="stylesheet" href="dashboard.css"> <!-- Style général de l'accueil -->
+    <link rel="stylesheet" href="accueil.css">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-    <div class="background-image"></div> <!-- Fond d'écran -->
+    <div class="background-image"></div>
 
     <header>
         <nav>
             <ul>
-                <li><a href="accueil.html">Accueil</a></li>
+                <li><a href="accueil.php">Accueil</a></li>
                 <li><a href="evenements.php">Événements</a></li>
                 <li><a href="location.php">Location d'Équipements</a></li>
                 <li><a href="dashboard.php">Espace Personnel</a></li>
@@ -48,12 +48,19 @@ if (!isset($_SESSION['user'])) {
         </nav>
     </header>
 
-
-
     <main class="dashboard-container">
     <?php if (isset($not_logged_in) && $not_logged_in): ?>
         <!-- ... (code existant pour les non connectés) ... -->
     <?php else: ?>
+
+        <?php if (isset($_GET['message_envoye'])): ?>
+            <?php if ($_GET['message_envoye'] == 1): ?>
+                <p style="color:green;">Votre message a été envoyé avec succès.</p>
+            <?php else: ?>
+                <p style="color:red;">Erreur lors de l'envoi du message.</p>
+            <?php endif; ?>
+        <?php endif; ?>
+
         <h1>Mon Espace Personnel</h1>
 
         <div class="dashboard-grid">
@@ -68,6 +75,11 @@ if (!isset($_SESSION['user'])) {
                                     <p><strong>Date de début :</strong> <?= htmlspecialchars($reservation['date_debut']) ?></p>
                                     <p><strong>Date de fin :</strong> <?= htmlspecialchars($reservation['date_fin']) ?></p>
                                     <p><strong>Statut :</strong> <?= htmlspecialchars($reservation['statut']) ?></p>
+
+                                    <form action="annuler_reservation.php" method="post" onsubmit="return confirm('Confirmer l\'annulation de cette réservation ?');">
+                                        <input type="hidden" name="reservation_id" value="<?= $reservation['id'] ?>">
+                                        <button type="submit">Annuler</button>
+                                    </form>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
@@ -89,6 +101,11 @@ if (!isset($_SESSION['user'])) {
                                     <p><strong>Date :</strong> <?= htmlspecialchars($inscription['evenement_date']) ?></p>
                                     <p><strong>Lieu :</strong> <?= htmlspecialchars($inscription['evenement_lieu']) ?></p>
                                     <p><strong>Statut :</strong> <?= htmlspecialchars($inscription['statut']) ?></p>
+
+                                    <form action="annuler_evenement.php" method="post" onsubmit="return confirm('Confirmer l\'annulation de votre inscription à cet événement ?');">
+                                        <input type="hidden" name="reservation_id" value="<?= $inscription['id'] ?>">
+                                        <button type="submit">Annuler l'inscription</button>
+                                    </form>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
@@ -112,8 +129,23 @@ if (!isset($_SESSION['user'])) {
                     });
                 </script>
             </section>
+
+            <!-- 🔽 NOUVELLE SECTION "Nous contacter" -->
+            <section class="contact">
+                <h2>Nous contacter</h2>
+                <form method="post" action="envoyer_message.php">
+                    <input type="hidden" name="user_id" value="<?= $_SESSION['user']['id'] ?>">
+                    <input type="hidden" name="nom" value="<?= htmlspecialchars($_SESSION['user']['nom']) ?>">
+                    <input type="hidden" name="email" value="<?= htmlspecialchars($_SESSION['user']['email']) ?>">
+
+                    <label for="message">Votre message :</label><br>
+                    <textarea name="message" id="message" rows="5" cols="60" required></textarea><br><br>
+
+                    <button type="submit">Envoyer</button>
+                </form>
+            </section>
         </div>
     <?php endif; ?>
-</main>
-
-
+    </main>
+</body>
+</html>
