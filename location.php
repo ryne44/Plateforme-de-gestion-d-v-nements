@@ -63,11 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['louer'])) {
     <header>
         <div class="header-content">
             <div class="logo">
-                <img src="images/Capture.jpg" alt="SPORT RENT Logo">
+                <img src="image2/logo.jpg" alt="SPORT RENT Logo">
             </div>
             <nav>
                 <ul>
-                    <li><a href="accueil.html">Accueil</a></li>
+                    <li><a href="accueil.php">Accueil</a></li>
                     <li><a href="evenements.php">Événements</a></li>
                     <li><a href="location.php" class="active">Location</a></li>
                     <li><a href="dashboard.php">Espace Perso</a></li>
@@ -110,29 +110,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['louer'])) {
             </div>
 
             <div class="equipment-grid" id="equipment-container">
-                <?php foreach ($equipements as $equipement): ?>
-                <div class="equipment-card" data-type="<?= htmlspecialchars($equipement['type']) ?>">
-                    <div class="equipment-image" style="background-image: url('images/equipements/<?= htmlspecialchars($equipement['image']) ?>')"></div>
+                <!-- Kit Football Complet -->
+                <div class="equipment-card" data-type="football">
+                    <img src="image2/football.jpg" alt="Kit Football Complet" class="equipment-image">
                     <div class="equipment-info">
-                        <span class="equipment-type"><?= htmlspecialchars($equipement['type']) ?></span>
-                        <h3><?= htmlspecialchars($equipement['nom']) ?></h3>
+                        <span class="equipment-type">Football</span>
+                        <h3>Kit Football Complet</h3>
                         <div class="equipment-meta">
-                            <span><i class="fas fa-tag"></i> <?= htmlspecialchars($equipement['prix']) ?>€/jour</span>
+                            <span><i class="fas fa-tag"></i> 25.00€/jour</span>
                             <span><i class="fas fa-box-open"></i> En stock</span>
                         </div>
-                        <p class="equipment-description"><?= htmlspecialchars($equipement['description']) ?></p>
+                        <p class="equipment-description">Ballon + chaussures + plots + filet</p>
                         
                         <form method="post" action="location.php" class="reservation-form">
-                            <input type="hidden" name="equipement_id" value="<?= $equipement['id'] ?>">
+                            <input type="hidden" name="equipement_id" value="1">
                             <div class="date-fields">
                                 <div>
-                                    <label for="date_debut_<?= $equipement['id'] ?>">Du:</label>
-                                    <input type="date" id="date_debut_<?= $equipement['id'] ?>" name="date_debut" required 
+                                    <label for="date_debut_1">Du:</label>
+                                    <input type="date" id="date_debut_1" name="date_debut" required 
                                            min="<?= date('Y-m-d') ?>">
                                 </div>
                                 <div>
-                                    <label for="date_fin_<?= $equipement['id'] ?>">Au:</label>
-                                    <input type="date" id="date_fin_<?= $equipement['id'] ?>" name="date_fin" required 
+                                    <label for="date_fin_1">Au:</label>
+                                    <input type="date" id="date_fin_1" name="date_fin" required 
                                            min="<?= date('Y-m-d', strtotime('+1 day')) ?>">
                                 </div>
                             </div>
@@ -140,7 +140,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['louer'])) {
                         </form>
                     </div>
                 </div>
-                <?php endforeach; ?>
+
+                <!-- Raquette Tennis Pro -->
+                <div class="equipment-card" data-type="tennis">
+                    <img src="image2/tennis.jpg" alt="Raquette Tennis Pro" class="equipment-image">
+                    <div class="equipment-info">
+                        <span class="equipment-type">Tennis</span>
+                        <h3>Raquette Tennis Pro</h3>
+                        <div class="equipment-meta">
+                            <span><i class="fas fa-tag"></i> 15.00€/jour</span>
+                            <span><i class="fas fa-box-open"></i> En stock</span>
+                        </div>
+                        <p class="equipment-description">Raquette Wilson Pro Staff + tube de balles</p>
+                        
+                        <form method="post" action="location.php" class="reservation-form">
+                            <input type="hidden" name="equipement_id" value="2">
+                            <div class="date-fields">
+                                <div>
+                                    <label for="date_debut_2">Du:</label>
+                                    <input type="date" id="date_debut_2" name="date_debut" required 
+                                           min="<?= date('Y-m-d') ?>">
+                                </div>
+                                <div>
+                                    <label for="date_fin_2">Au:</label>
+                                    <input type="date" id="date_fin_2" name="date_fin" required 
+                                           min="<?= date('Y-m-d', strtotime('+1 day')) ?>">
+                                </div>
+                            </div>
+                            <button type="submit" name="louer" class="btn-rent">Louer</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Sac à Dos Randonnée -->
+                <div class="equipment-card" data-type="randonnee">
+                    <img src="image2/randonnee.jpg" alt="Sac à Dos Randonnée" class="equipment-image">
+                    <div class="equipment-info">
+                        <span class="equipment-type">Randonnée</span>
+                        <h3>Sac à Dos Randonnée</h3>
+                        <div class="equipment-meta">
+                            <span><i class="fas fa-tag"></i> 10.00€/jour</span>
+                            <span><i class="fas fa-box-open"></i> En stock</span>
+                        </div>
+                        <p class="equipment-description">Sac 60L étanche avec porte-gourde</p>
+                        
+                        <form method="post" action="location.php" class="reservation-form">
+                            <input type="hidden" name="equipement_id" value="3">
+                            <div class="date-fields">
+                                <div>
+                                    <label for="date_debut_3">Du:</label>
+                                    <input type="date" id="date_debut_3" name="date_debut" required 
+                                           min="<?= date('Y-m-d') ?>">
+                                </div>
+                                <div>
+                                    <label for="date_fin_3">Au:</label>
+                                    <input type="date" id="date_fin_3" name="date_fin" required 
+                                           min="<?= date('Y-m-d', strtotime('+1 day')) ?>">
+                                </div>
+                            </div>
+                            <button type="submit" name="louer" class="btn-rent">Louer</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -149,5 +210,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['louer'])) {
         <p>&copy; 2025 SPORT RENT - Tous droits réservés</p>
     </footer>
 
+    <script src="location.js"></script>
 </body>
 </html>
