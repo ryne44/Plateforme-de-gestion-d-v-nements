@@ -56,12 +56,12 @@ $is_logged_in = isset($_SESSION['user']);
     <header>
         <div class="header-content">
             <div class="logo">
-                <img src="images/Capture.jpg" alt="SPORT RENT Logo">
+                <img src="image2/logo.jpg" alt="SPORT RENT Logo">
             </div>
             
             <nav>
                 <ul>
-                    <li><a href="accueil.html">Accueil</a></li>
+                    <li><a href="accueil.php">Accueil</a></li>
                     <li><a href="evenements.php" class="active">Événements</a></li>
                     <li><a href="location.php">Location</a></li>
                     <li><a href="dashboard.php">Espace Perso</a></li>
@@ -90,42 +90,38 @@ $is_logged_in = isset($_SESSION['user']);
             <div class="alert error"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></div>
         <?php endif; ?>
 
-        <!-- Message de débogage pour confirmer l'état de connexion -->
         <?php if($is_logged_in): ?>
             <div class="alert info">Connecté en tant que <?= htmlspecialchars($_SESSION['user']['nom']) ?></div>
         <?php endif; ?>
 
         <section class="events-container">
             <div class="filters">
-                <select id="sport-filter">
-                    <option value="all">Tous les sports</option>
-                    <option value="football">Football</option>
-                    <option value="basket">Basketball</option>
-                    <option value="tennis">Tennis</option>
-                    <option value="running">Course à pied</option>
-                    <option value="surf">Surf</option>
-                </select>
+            <select id="sport-filter">
+    <option value="all">Tous les sports</option>
+    <option value="football">Football</option>
+    <option value="course à pied">Course à pied</option>
+    <option value="surf">Surf</option>
+</select>
                 <input type="text" id="search-input" placeholder="Rechercher un événement...">
             </div>
 
             <div class="events-grid" id="events-grid">
-                <?php foreach ($events as $event): ?>
+                <!-- Tournoi de Football -->
                 <div class="event-card">
-                    <div class="event-image" style="background-image: url('images/<?= htmlspecialchars($event['image']) ?>')"></div>
+                    <img src="image2/football-event.jpg" alt="Tournoi de Football" class="event-image">
                     <div class="event-info">
-                        <span class="event-sport"><?= htmlspecialchars($event['sport']) ?></span>
-                        <h3><?= htmlspecialchars($event['titre']) ?></h3>
+                        <span class="event-sport">Football</span>
+                        <h3>Tournoi de Football Inter-Entreprises</h3>
                         <div class="event-meta">
-                            <span><i class="fas fa-calendar-alt"></i> <?= date('d/m/Y', strtotime($event['date'])) ?></span>
-                            <span><i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars($event['lieu']) ?></span>
+                            <span><i class="fas fa-calendar-alt"></i> 15/06/2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Stade Municipal, Paris</span>
                         </div>
                         <div class="event-meta">
-                            <span><i class="fas fa-tag"></i> <?= htmlspecialchars($event['prix']) ?>€</span>
+                            <span><i class="fas fa-tag"></i> 25.00€</span>
                         </div>
-                        <p class="event-description"><?= htmlspecialchars($event['description']) ?></p>
-                        
+                        <p class="event-description">Tournoi annuel ouvert à toutes les entreprises de la région. Équipes de 7 joueurs.</p>
                         <form method="post" action="evenements.php">
-                            <input type="hidden" name="event_id" value="<?= $event['id'] ?>">
+                            <input type="hidden" name="event_id" value="1">
                             <button type="submit" name="s_inscrire" class="btn-event">
                                 <?php if($is_logged_in): ?>
                                     S'inscrire
@@ -136,7 +132,60 @@ $is_logged_in = isset($_SESSION['user']);
                         </form>
                     </div>
                 </div>
-                <?php endforeach; ?>
+
+                <!-- Marathon de la Ville -->
+                <div class="event-card">
+                    <img src="image2/marathon-event.jpg" alt="Marathon" class="event-image">
+                    <div class="event-info">
+                        <span class="event-sport">Course à pied</span>
+                        <h3>Marathon de la Ville</h3>
+                        <div class="event-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 22/06/2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Centre-ville, Lyon</span>
+                        </div>
+                        <div class="event-meta">
+                            <span><i class="fas fa-tag"></i> 40.00€</span>
+                        </div>
+                        <p class="event-description">Marathon annuel avec parcours de 42km dans les rues de la ville. Départs groupés.</p>
+                        <form method="post" action="evenements.php">
+                            <input type="hidden" name="event_id" value="2">
+                            <button type="submit" name="s_inscrire" class="btn-event">
+                                <?php if($is_logged_in): ?>
+                                    S'inscrire
+                                <?php else: ?>
+                                    Se connecter pour s'inscrire
+                                <?php endif; ?>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Compétition de Surf -->
+                <div class="event-card">
+                    <img src="image2/surf-event.jpg" alt="Compétition de Surf" class="event-image">
+                    <div class="event-info">
+                        <span class="event-sport">Surf</span>
+                        <h3>Compétition de Surf</h3>
+                        <div class="event-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 05/07/2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Plage de Biarritz</span>
+                        </div>
+                        <div class="event-meta">
+                            <span><i class="fas fa-tag"></i> 30.00€</span>
+                        </div>
+                        <p class="event-description">Compétition régionale de surf toutes catégories. Inscription obligatoire.</p>
+                        <form method="post" action="evenements.php">
+                            <input type="hidden" name="event_id" value="3">
+                            <button type="submit" name="s_inscrire" class="btn-event">
+                                <?php if($is_logged_in): ?>
+                                    S'inscrire
+                                <?php else: ?>
+                                    Se connecter pour s'inscrire
+                                <?php endif; ?>
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -146,7 +195,7 @@ $is_logged_in = isset($_SESSION['user']);
             <p>&copy; 2025 SPORT RENT - Tous droits réservés</p>
         </div>
     </footer>
+    <script src="evenements.js"></script>
 
-    
 </body>
 </html>
