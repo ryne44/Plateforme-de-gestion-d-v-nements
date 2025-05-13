@@ -137,11 +137,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header>
         <div class="header-content">
             <div class="logo">
-                <img src="images/Capture.jpg" alt="SPORT RENT Logo">
+                <img src="image/logo.jpg" alt="SPORT RENT Logo">
             </div>
             <nav>
                 <ul>
-                    <li><a href="accueil.html">Accueil</a></li>
+                    <li><a href="accueil.php">Accueil</a></li>
                     <li><a href="evenements.php">Événements</a></li>
                     <li><a href="location.php">Location</a></li>
                     <li><a href="dashboard.php" class="active">Espace Perso</a></li>

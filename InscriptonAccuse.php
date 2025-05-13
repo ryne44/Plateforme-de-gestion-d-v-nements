@@ -23,7 +23,7 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
 </head>
 <body>
     <header>
-        <img src="images/Capture.jpg" alt="SPORT RENT" class="logo">
+        <img src="image/logo.jpg" alt="SPORT RENT" class="logo">
         <nav>
             <a href="accueil.php">Accueil</a>
             <a href="inscription.php">Inscription</a>

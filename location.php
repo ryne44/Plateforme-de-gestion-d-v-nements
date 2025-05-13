@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['louer'])) {
     <header>
         <div class="header-content">
             <div class="logo">
-                <img src="image2/logo.jpg" alt="SPORT RENT Logo">
+                <img src="image/logo.jpg" alt="SPORT RENT Logo">
             </div>
             <nav>
                 <ul>
@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['louer'])) {
             <div class="equipment-grid" id="equipment-container">
                 <!-- Kit Football Complet -->
                 <div class="equipment-card" data-type="football">
-                    <img src="image2/football.jpg" alt="Kit Football Complet" class="equipment-image">
+                    <img src="image/football.jpg" alt="Kit Football Complet" class="equipment-image">
                     <div class="equipment-info">
                         <span class="equipment-type">Football</span>
                         <h3>Kit Football Complet</h3>
@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['louer'])) {
 
                 <!-- Raquette Tennis Pro -->
                 <div class="equipment-card" data-type="tennis">
-                    <img src="image2/tennis.jpg" alt="Raquette Tennis Pro" class="equipment-image">
+                    <img src="image/tennis.jpg" alt="Raquette Tennis Pro" class="equipment-image">
                     <div class="equipment-info">
                         <span class="equipment-type">Tennis</span>
                         <h3>Raquette Tennis Pro</h3>
@@ -174,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['louer'])) {
 
                 <!-- Sac à Dos Randonnée -->
                 <div class="equipment-card" data-type="randonnee">
-                    <img src="image2/randonnee.jpg" alt="Sac à Dos Randonnée" class="equipment-image">
+                    <img src="image/randonnee.jpg" alt="Sac à Dos Randonnée" class="equipment-image">
                     <div class="equipment-info">
                         <span class="equipment-type">Randonnée</span>
                         <h3>Sac à Dos Randonnée</h3>

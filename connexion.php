@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,7 +13,7 @@
     <header>
         <nav>
             <ul>
-                <li><a href="accueil.html">Accueil</a></li>
+                <li><a href="accueil.php">Accueil</a></li>
                 <li><a href="evenements.php">Événements</a></li>
                 <li><a href="location.php">Location d'Équipements</a></li>
                 <li><a href="dashboard.php">Espace Personnel</a></li>

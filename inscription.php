@@ -70,9 +70,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <header>
-        <img src="images/Capture.jpg" alt="SPORT RENT" class="logo">
+        <img src="image/logo.jpg" alt="SPORT RENT" class="logo">
         <nav>
-            <a href="accueil.html">Accueil</a>
+            <a href="accueil.php">Accueil</a>
             <a href="inscription.php" class="active">Inscription</a>
         </nav>   
     </header>

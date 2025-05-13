@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     // Animation du titre
     const title = document.querySelector('.main-title h1');
@@ -24,7 +23,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 500);
     });
 });
-
-
-
 

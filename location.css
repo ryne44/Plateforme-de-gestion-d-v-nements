@@ -13,7 +13,7 @@
 .page-header {
     text-align: center;
     padding: 4rem 2rem;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/equipement.jpg') center/cover;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('image/equipement.jpg') center/cover;
     color: white;
 }
 
@@ -160,6 +160,7 @@
     padding: 2rem;
 }
 
+
 /* Styles pour les messages d'alerte */
 .alert {
     padding: 1rem;
@@ -204,25 +205,4 @@
         margin: 1rem;
         padding: 0.8rem;
     }
-}
-
-/* Styles pour le formulaire de réservation */
-.date-fields {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.date-fields label {
-    display: block;
-    margin-bottom: 0.3rem;
-    color: var(--gray);
-    font-size: 0.9rem;
-}
-
-.date-fields input[type="date"] {
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 100%;
 }

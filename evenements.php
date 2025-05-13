@@ -56,7 +56,7 @@ $is_logged_in = isset($_SESSION['user']);
     <header>
         <div class="header-content">
             <div class="logo">
-                <img src="image2/logo.jpg" alt="SPORT RENT Logo">
+                <img src="image/logo.jpg" alt="SPORT RENT Logo">
             </div>
             
             <nav>
@@ -108,7 +108,7 @@ $is_logged_in = isset($_SESSION['user']);
             <div class="events-grid" id="events-grid">
                 <!-- Tournoi de Football -->
                 <div class="event-card">
-                    <img src="image2/football-event.jpg" alt="Tournoi de Football" class="event-image">
+                    <img src="image/football-event.jpg" alt="Tournoi de Football" class="event-image">
                     <div class="event-info">
                         <span class="event-sport">Football</span>
                         <h3>Tournoi de Football Inter-Entreprises</h3>
@@ -135,7 +135,7 @@ $is_logged_in = isset($_SESSION['user']);
 
                 <!-- Marathon de la Ville -->
                 <div class="event-card">
-                    <img src="image2/marathon-event.jpg" alt="Marathon" class="event-image">
+                    <img src="image/marathon-event.jpg" alt="Marathon" class="event-image">
                     <div class="event-info">
                         <span class="event-sport">Course à pied</span>
                         <h3>Marathon de la Ville</h3>
@@ -162,7 +162,7 @@ $is_logged_in = isset($_SESSION['user']);
 
                 <!-- Compétition de Surf -->
                 <div class="event-card">
-                    <img src="image2/surf-event.jpg" alt="Compétition de Surf" class="event-image">
+                    <img src="image/surf-event.jpg" alt="Compétition de Surf" class="event-image">
                     <div class="event-info">
                         <span class="event-sport">Surf</span>
                         <h3>Compétition de Surf</h3>

@@ -34,7 +34,7 @@ session_start();
     <header>
         <div class="header-content">
             <div class="logo">
-                <img src="image2/logo.jpg" alt="SPORT RENT Logo">
+                <img src="image/logo.jpg" alt="SPORT RENT Logo">
             </div>
             
             <nav>
