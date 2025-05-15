@@ -53,3 +53,21 @@ nav {
     color: #d10000;
     text-decoration: none;
 }
+
+
+.password-requirements {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        .requirement {
+            margin: 5px 0;
+            color: #666;
+        }
+        .requirement.valid {
+            color: green;
+        }
+        .requirement.invalid {
+            color: red;
+        }

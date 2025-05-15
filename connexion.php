@@ -19,6 +19,8 @@
                 <li><a href="dashboard.php">Espace Personnel</a></li>
                 <li><a href="inscription.php">S'inscrire</a></li>
                 <li><a href="connexion.php" class="active">Connexion</a></li>
+                <li><a href="statistiques.php">Statistiques - SportRent</a></li>
+
             </ul>
         </nav>
     </header>
@@ -65,35 +67,41 @@
 
 <?php
 session_start();
-require 'db_connect.php'; // Assurez-vous que ce fichier contient la connexion à la base de données
+require 'db_connect.php';
 
-$message = ""; // Message d'erreur ou de succès pour afficher dans la page
+$message = "";
 
-// Vérifier si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['mot_de_passe'];
     
-    // Vérifier si l'utilisateur existe dans la base de données
+    // Vérifier si l'utilisateur existe
     $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE email = ?");
     $stmt->execute([$email]);
     $user = $stmt->fetch();
     
-    if ($user && password_verify($password, $user['mot_de_passe'])) {
-        // Démarrer la session de l'utilisateur
-        $_SESSION['user'] = [
-            'id' => $user['id'],
-            'nom' => $user['nom'],
-            'email' => $user['email'],
-            'role' => $user['role']
-        ];
-        
-        // Rediriger vers le dashboard
-        header('Location: dashboard.php');
-        exit;
+    if ($user) {
+        // Vérifier le mot de passe
+        if (password_verify($password, $user['mot_de_passe'])) {
+            $_SESSION['user'] = [
+                'id' => $user['id'],
+                'nom' => $user['nom'],
+                'email' => $user['email'],
+                'role' => $user['role']
+            ];
+            
+            // Redirection en fonction du rôle
+            if ($user['role'] === 'admin') {
+                header('Location: admin_dashboard.php'); // Créez cette page pour l'admin
+            } else {
+                header('Location: dashboard.php'); // Page normale pour les utilisateurs
+            }
+            exit;
+        } else {
+            $message = "Mot de passe incorrect.";
+        }
     } else {
-        // Si les identifiants sont incorrects
-        $message = "Identifiants incorrects. Veuillez réessayer.";
+        $message = "Aucun compte trouvé avec cet email.";
     }
 }
 ?>

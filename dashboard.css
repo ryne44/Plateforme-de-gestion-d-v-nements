@@ -1,4 +1,25 @@
 /* Styles spécifiques au dashboard */
+
+
+form button[type="submit"] {
+    display: inline-block;
+    background-color: #d10000;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+form button[type="submit"]:hover {
+    background-color: #a80000;
+}
+
+
+
+
 .dashboard-container {
     max-width: 1200px;
     margin: 2rem auto;

@@ -133,18 +133,42 @@ if (!isset($_SESSION['user'])) {
 
             <!-- 🔽 NOUVELLE SECTION "Nous contacter" -->
             <section class="contact">
-                <h2>Nous contacter</h2>
-                <form method="post" action="envoyer_message.php">
-                    <input type="hidden" name="user_id" value="<?= $_SESSION['user']['id'] ?>">
-                    <input type="hidden" name="nom" value="<?= htmlspecialchars($_SESSION['user']['nom']) ?>">
-                    <input type="hidden" name="email" value="<?= htmlspecialchars($_SESSION['user']['email']) ?>">
+    <h2>Nous contacter</h2>
+    <form method="post" action="envoyer_message.php" onsubmit="return validateMessage()">
+        <input type="hidden" name="user_id" value="<?= $_SESSION['user']['id'] ?>">
+        <input type="hidden" name="nom" value="<?= htmlspecialchars($_SESSION['user']['nom']) ?>">
+        <input type="hidden" name="email" value="<?= htmlspecialchars($_SESSION['user']['email']) ?>">
 
-                    <label for="message">Votre message :</label><br>
-                    <textarea name="message" id="message" rows="5" cols="60" required></textarea><br><br>
+        <label for="message">Votre message :</label><br>
+        <textarea name="message" id="message" rows="5" cols="60" maxlength="300" required oninput="updateCharCount()"></textarea><br>
+        <div id="charCount">300 caractères restants</div><br>
 
-                    <button type="submit">Envoyer</button>
-                </form>
-            </section>
+        <button type="submit">Envoyer</button> <!-- ← CE BOUTON DOIT ÊTRE À CET ENDROIT -->
+    </form>
+
+    <script>
+        function updateCharCount() {
+            const textarea = document.getElementById('message');
+            const remaining = 300 - textarea.value.length;
+            const counter = document.getElementById('charCount');
+            counter.textContent = remaining + ' caractères restants';
+            counter.style.color = remaining <= 50 ? 'red' : 'black';
+        }
+
+        function validateMessage() {
+            const message = document.getElementById('message').value.trim();
+            if (message.length === 0) {
+                alert("Le message ne peut pas être vide.");
+                return false;
+            }
+            if (message.length > 300) {
+                alert("Le message ne peut pas dépasser 300 caractères.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</section>
         </div>
     <?php endif; ?>
     </main>

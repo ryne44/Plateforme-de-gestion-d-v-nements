@@ -70,6 +70,7 @@ $is_logged_in = isset($_SESSION['user']);
                     <?php else: ?>
                         <li><a href="connexion.php">Connexion</a></li>
                         <li><a href="inscription.php">Inscription</a></li>
+                        <li><a href="statistiques.php">Statistiques - SportRent</a></li>
                     <?php endif; ?>
                 </ul>
             </nav>
